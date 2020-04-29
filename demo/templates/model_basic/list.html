@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Person</title>
+</head>
+<body>
+<div>
+    <h3>List Person</h3>
+    <table>
+        <thead>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>FullName</th>
+        <th><a href='{% url 'model:create' %}'>Add</a></th>
+        </thead>
+        <tbody>
+        {% if person_list %}
+            {% for person in person_list %}
+                <tr>
+                    <td>{{ person.first_name }}</td>
+                    <td>{{ person.last_name }}</td>
+                    <td>{{ person.full_name }}</td>
+                    <td>
+                        <p>
+                            <a href='{% url 'model:update' person.id %}'>Edit</a>
+                            <a href="{% url 'model:delete' person.id %}">Delete</a>
+                        </p>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

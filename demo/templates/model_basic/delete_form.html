@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Delete!</title>
+</head>
+<body>
+<div>
+    <form method="post">{% csrf_token %}
+        Are you sure you want to delete "{{ person.full_name }}" ?
+        <input class="btn btn-primary" type="submit" value="Submit"/>
+    </form>
+</div>
+</body>
+</html>
