@@ -1,0 +1,50 @@
+<html>
+<head>
+
+</head>
+<body>
+<h3>{{ store.name }}</h3>
+<form action="{% url 'stores:update' store.id %}" method='post'>
+    {% csrf_token %}
+    <table>
+        <input type="hidden" name="id" value="{{ store.id }}">
+        <tr>
+            <td>Name</td>
+            <td>{{ store.name }}</td>
+            <td><input type="text" value="{{ store.name }}" name="name" placeholder="Name"/></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>{{ store.address }}</td>
+            <td><label>
+                <textarea cols="5" rows="5" title="Address" name="address"
+                          placeholder="Address">{{ store.name }}</textarea>
+            </label></td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>{{ store.phone }}</td>
+            <td><input type="tel" value="{{ store.phone }}" name="phone" placeholder="Phone"/></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{ store.email }}</td>
+            <td><input type="email" value="{{ store.email }}" name="email" placeholder="Email"/></td>
+        </tr>
+        <tr>
+            <td>Create Date</td>
+            <td>{{ store.create_date }}</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Save"/>
+            </td>
+            <td>
+                <button type="button"><a href='{% url 'stores:index' %}'>Cancel</a></button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+
+</html>

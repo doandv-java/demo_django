@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stores Index</title>
+</head>
+<body>
+<table border="1">
+    <caption style="color: red">The List Stores in Database</caption>
+    <thead>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Create Date</th>
+    <th>Category</th>
+    <th><a href='#'>Add Stores</a></th>
+    </thead>
+    <tbody>
+    {% if list_store %}
+        {% for store in list_store %}
+            <tr>
+                <td>{{ store.name }}</td>
+                <td>{{ store.address }}</td>
+                <td>{{ store.phone }}</td>
+                <td>{{ store.email }}</td>
+                <td>{{ store.create_date.date.isoformat }}</td>
+                <td>
+                    {% for category in store.category_set.all %}
+                        <span><a href='#'>{{ category.name }}</a></span>
+                    {% endfor %}
+                </td>
+                <td>
+                    <p>
+                        <span><a href='{% url 'stores:update' %}'>Edit</a></span>
+                        <span><a href="#">Delete</a></span>
+                    </p>
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <p>No stores in DB</p>
+
+    {% endif %}
+
+    </tbody>
+</table>
+
+</body>
+</html>
